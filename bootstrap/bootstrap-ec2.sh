@@ -1,6 +1,6 @@
 #!/bin/bash -x
 source ~/.bashrc
-# Based on  https://github.com/fastai/courses/blob/master/setup/install-gpu.sh 
+# Based on  https://github.com/fastai/courses/blob/master/setup/install-gpu.sh
 # Integrated with Cloud Formation template
 
 InstanceType=$1
@@ -24,70 +24,73 @@ export curuser=`whoami`
 
 if [ "x${DLImage}" == "xubuntuBootstrapAMI" ]; then
 
-sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+	sudo apt-get update
+	sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 
-sudo apt-get --assume-yes install tmux build-essential gcc g++ make binutils
-sudo apt-get --assume-yes install software-properties-common
+	sudo apt-get --assume-yes install tmux build-essential gcc g++ make binutils
+	sudo apt-get --assume-yes install software-properties-common
 
-# download and install GPU drivers
-wget "http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44-1_amd64.deb" -O "cuda-repo-ubuntu1604_8.0.44-1_amd64.deb"
+	# download and install GPU drivers
+	wget "http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44-1_amd64.deb" -O "cuda-repo-ubuntu1604_8.0.44-1_amd64.deb"
 
-sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
-sudo apt-get update
-sudo apt-get -y install cuda
-sudo modprobe nvidia
-nvidia-smi
+	sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+	sudo apt-get update
+	sudo apt-get -y install cuda
+	sudo modprobe nvidia
+	nvidia-smi
 
-# install Anaconda for current user
-mkdir downloads
-cd downloads
-wget "https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh" -O "Anaconda2-4.2.0-Linux-x86_64.sh"
-bash "Anaconda2-4.2.0-Linux-x86_64.sh" -b
+	# install Anaconda for current user
+	mkdir downloads
+	cd downloads
+	wget "https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh" -O "Anaconda2-4.2.0-Linux-x86_64.sh"
+	bash "Anaconda2-4.2.0-Linux-x86_64.sh" -b
 
-echo "export PATH=\"$HOME/anaconda2/bin:\$PATH\"" >> ~/.bashrc
-export PATH="$HOME/anaconda2/bin:$PATH"
-conda install -y bcolz
-conda upgrade -y --all
+	echo "export PATH=\"$HOME/anaconda2/bin:\$PATH\"" >> ~/.bashrc
+	export PATH="$HOME/anaconda2/bin:$PATH"
+	conda install -y bcolz
+	conda upgrade -y --all
 
-# install and configure theano
-pip install theano
-echo "[global]
-device = "$theanodev"
-floatX = float32
+	# install and configure theano
+	pip install theano
+	echo "[global]
+	device = "$theanodev"
+	floatX = float32
 
-[cuda]
-root = /usr/local/cuda" > ~/.theanorc
+	[cuda]
+	root = /usr/local/cuda" > ~/.theanorc
 
-# install and configure keras
-pip install keras==1.2.2
-mkdir ~/.keras
-echo '{
-    "image_dim_ordering": "th",
-    "epsilon": 1e-07,
-    "floatx": "float32",
-    "backend": "theano"
-}' > ~/.keras/keras.json
+	# install and configure keras
+	pip install keras==1.2.2
+	mkdir ~/.keras
+	echo '{
+		"image_dim_ordering": "th",
+		"epsilon": 1e-07,
+		"floatx": "float32",
+		"backend": "theano"
+	}' > ~/.keras/keras.json
 
-# install cudnn libraries
-wget "http://files.fast.ai/files/cudnn.tgz" -O "cudnn.tgz"
-tar -zxf cudnn.tgz
-cd cuda
-sudo cp lib64/* /usr/local/cuda/lib64/
-sudo cp include/* /usr/local/cuda/include/
+	# install cudnn libraries
+	wget "http://files.fast.ai/files/cudnn.tgz" -O "cudnn.tgz"
+	tar -zxf cudnn.tgz
+	cd cuda
+	sudo cp lib64/* /usr/local/cuda/lib64/
+	sudo cp include/* /usr/local/cuda/include/
 
-pip install awscli
+	pip install awscli
 
-sudo apt-get -y install python-pip
-sudo pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
+	sudo apt-get -y install python-pip
+	sudo pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
 
 fi
 
 if [ "x${DLImage}" == "xawsDeepLearningAMI" ]; then
 	sudo ln -s /opt/aws/bin/cfn-signal /usr/local/bin/cfn-signal
+	sudo yum install tmux
 	#sudo pip install -U bcolz
 fi
 
+# install extra python packages common to all:
+sudo pip install seaborn
 
 # configure jupyter and prompt for password
 jupyter notebook -y --generate-config
@@ -98,7 +101,7 @@ c.NotebookApp.open_browser = False" >> $HOME/.jupyter/jupyter_notebook_config.py
 
 
 if [ "x${custifsid}" == "xCREATE-NEW-EFS"  ]; then
-	#Looking up new EFS filesystem  
+	#Looking up new EFS filesystem
 	export efsid=`aws efs describe-file-systems --output text --query "FileSystems[?Name=='$stackname'].FileSystemId"`
 else
   export efsid=$custifsid
@@ -125,10 +128,10 @@ sudo bash -c 'echo '${efsid}'.efs.'${region}'.amazonaws.com:/ '$HOME'/efs nfs4 r
 
 sudo bash -c 'chown -R '$curuser':'$curuser' '$HOME'/efs'
 cd $HOME/efs
-# clone the fast.ai course repo 
+# clone the fast.ai course repo
 
 if [ ! -d "courses" ]; then
-	echo "Clonning fastai notebookes..."
+	echo "Cloning fastai notebookes..."
 git clone https://github.com/fastai/courses.git
 fi
 
