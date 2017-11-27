@@ -603,7 +603,7 @@
                                         [
                                             "#!/bin/bash -x\n",
                                             "exec > >(tee /var/log/bootstrap.log|logger -t user-data ) 2>&1\n",
-                                            "wget \"https://raw.githubusercontent.com/tensoralex/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
+                                            "wget \"https://raw.githubusercontent.com/tarlen5/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
                                             "chmod +x bootstrap-ec2.sh\n"
                                         ]
                                     ]
@@ -651,7 +651,7 @@
                             [
                                 "#!/bin/bash -x\n",
                                 "exec > >(tee /var/log/bootstrap.log|logger -t user-data ) 2>&1\n",
-                                "wget \"https://raw.githubusercontent.com/tensoralex/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
+                                "wget \"https://raw.githubusercontent.com/tarlen5/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
                                 "chmod +x bootstrap-ec2.sh\n"
                             ]
                         ]
@@ -752,7 +752,7 @@
                                         [
                                             "#!/bin/bash -x\n",
                                             "exec > >(tee /var/log/bootstrap.log|logger -t user-data ) 2>&1\n",
-                                            "wget \"https://raw.githubusercontent.com/tensoralex/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
+                                            "wget \"https://raw.githubusercontent.com/tarlen5/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
                                             "chmod +x bootstrap-ec2.sh\n",
                                             "su - ",
                                             {
@@ -894,7 +894,7 @@
                             [
                                 "#!/bin/bash -x\n",
                                 "exec > >(tee /var/log/bootstrap.log|logger -t user-data ) 2>&1\n",
-                                "wget \"https://raw.githubusercontent.com/tensoralex/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
+                                "wget \"https://raw.githubusercontent.com/tarlen5/deeplearning-env-cfn/master/bootstrap/bootstrap-ec2.sh\"\n",
                                 "chmod +x bootstrap-ec2.sh\n",
                                 "su - ",
                                 {
