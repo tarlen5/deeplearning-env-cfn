@@ -101,7 +101,7 @@ echo "c.NotebookApp.password = u'"$jupass"'" >> $HOME/.jupyter/jupyter_notebook_
 echo "c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False" >> $HOME/.jupyter/jupyter_notebook_config.py
 
-# replace matplotlibrc file for plotting in jupyter notebooks:
+# replace backend with 'agg' in matplotlibrc file for plotting in jupyter notebooks:
 mplrc=`python3 -c "import matplotlib; print(matplotlib.matplotlib_fname())"`
 sudo sed -i 's/backend      : TkAgg/backend      : agg/g' $mplrc
 mplrc=`python -c "import matplotlib; print matplotlib.matplotlib_fname()"`
