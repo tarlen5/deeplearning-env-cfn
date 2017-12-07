@@ -133,7 +133,7 @@
         },
         "DLImage": {
             "Type": "String",
-            "Default": "ubuntuBootstrapAMI",
+            "Default": "awsDeepLearningAMI",
             "Description": "Select AMI image: ubuntuBootstrapAMI = Ubuntu 16.04, Theano, Keras 1.2.2, EBS 16Gb, EFS; awsDeepLearningAMI = AWS DL 2.2_Jun2017, EBS 50Gb, EFS;",
             "AllowedValues": [
                 "awsDeepLearningAMI",
