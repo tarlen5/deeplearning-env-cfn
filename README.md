@@ -6,7 +6,7 @@
 #### Currently has a choice of two environments:
 1.	ubuntuBootstrapAMI – Bootstraps environment based on Ubuntu 16.04, Anaconda 2-4.2.0, Cuda 8.0.44, Keras 1.2.2 and Theano
 
-Root volume – 16Gb, Data – EFS mounted under /home/ubuntu/efs
+Root volume – 100Gb, Data – EFS mounted under /home/ubuntu/efs
 
 Compatible to run [fast.ai courses](https://github.com/fastai/courses) notebooks.
 
