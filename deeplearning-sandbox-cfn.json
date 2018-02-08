@@ -229,17 +229,17 @@
             "us-east-1": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "16"
+                "ubuntuBootstrapAMI": "100"
             },
             "us-west-2": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "16"
+                "ubuntuBootstrapAMI": "100"
             },
             "eu-west-1": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "16"
+                "ubuntuBootstrapAMI": "100"
             }
         },
         "BlockDeviceMap": {
