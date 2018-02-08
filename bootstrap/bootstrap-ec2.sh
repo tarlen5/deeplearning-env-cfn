@@ -81,6 +81,9 @@ if [ "x${DLImage}" == "xubuntuBootstrapAMI" ]; then
 	sudo apt-get -y install python-pip
 	sudo pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
 
+    # My additions:
+    sudo apt-get -y tmux
+
 fi
 
 if [ "x${DLImage}" == "xawsDeepLearningAMI" ]; then
