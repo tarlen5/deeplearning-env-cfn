@@ -134,7 +134,7 @@
         "DLImage": {
             "Type": "String",
             "Default": "awsDeepLearningAMI",
-            "Description": "Select AMI image: ubuntuBootstrapAMI = Ubuntu 16.04, Theano, Keras 1.2.2, EBS 16Gb, EFS; awsDeepLearningAMI = AWS DL 2.2_Jun2017, EBS 50Gb, EFS;",
+            "Description": "Select AMI image: ubuntuBootstrapAMI = Ubuntu 16.04, Theano, Keras 1.2.2, EBS 100Gb, EFS; awsDeepLearningAMI = AWS DL 2.2_Jun2017, EBS 50Gb, EFS;",
             "AllowedValues": [
                 "awsDeepLearningAMI",
                 "ubuntuBootstrapAMI"
@@ -229,17 +229,17 @@
             "us-east-1": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "100"
+                "ubuntuBootstrapAMI": "60"
             },
             "us-west-2": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "100"
+                "ubuntuBootstrapAMI": "60"
             },
             "eu-west-1": {
                 "fastaiAMI": "128",
                 "awsDeepLearningAMI": "50",
-                "ubuntuBootstrapAMI": "100"
+                "ubuntuBootstrapAMI": "60"
             }
         },
         "BlockDeviceMap": {

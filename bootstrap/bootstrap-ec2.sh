@@ -83,6 +83,11 @@ if [ "x${DLImage}" == "xubuntuBootstrapAMI" ]; then
 
     # My additions:
     sudo apt-get -y tmux
+    sudo apt-get -y emacs
+    sudo apt install -y nvidia-cuda-toolkit
+    conda install -y seaborn
+    # Uninstall presentation mode
+    jupyter-nbextension uninstall nbpresent
 
 fi
 
