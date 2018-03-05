@@ -89,6 +89,9 @@ if [ "x${DLImage}" == "xubuntuBootstrapAMI" ]; then
     # Uninstall presentation mode
     jupyter-nbextension uninstall nbpresent
 
+    # Upgrad CUDNN:
+
+
 fi
 
 if [ "x${DLImage}" == "xawsDeepLearningAMI" ]; then
@@ -145,10 +148,10 @@ sudo bash -c 'chown -R '$curuser':'$curuser' '$HOME'/efs'
 cd $HOME/efs
 # clone the fast.ai course repo
 
-if [ ! -d "courses" ]; then
-	echo "Cloning fastai notebookes..."
-git clone https://github.com/fastai/courses.git
-fi
+# if [ ! -d "courses" ]; then
+# 	echo "Cloning fastai notebookes..."
+# git clone https://github.com/fastai/courses.git
+# fi
 
 nohup jupyter notebook &
 df -hP
